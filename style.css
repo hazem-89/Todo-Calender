@@ -1,0 +1,130 @@
+body{
+    margin:0;
+    padding:0;
+    background-color: whitesmoke;
+    max-height: 100vh;
+    box-sizing: border-box;
+}
+html {
+    font-size: 52.5%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    height: 10vh;
+}
+.container-sidebar-calendar{
+    display: flex;
+    flex-direction: row;
+    height:90vh;
+}
+.sidebar{
+    background-color: yellow;
+    width: 25%;
+    padding: 1em 0;
+}
+
+.container{
+    background-color: yellowgreen;
+    width:75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.calendar{
+    height: 100%;
+    width: 100%;
+    background-color: #2f2f50;
+    box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+  }
+.month{
+    background-color: rgb(73, 132, 139);
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+    text-align: center;
+}
+.fas {
+    color: black;
+    cursor: pointer;
+    font-size: 2.5em;
+}
+.month  h2 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+.month p {
+    font-size: 1.5em;
+}
+.weekDays{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .4em;
+    text-transform: uppercase;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.weekDays div {
+    font-size: 1.2em;
+    letter-spacing: .1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 0;
+}
+
+.days{
+    display: flex;
+    flex-wrap: wrap;
+    padding: .2em;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.days div {
+    font-size: 1.4rem;
+    margin: 0.3rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+  
+  .days div:hover:not(.today) {
+    background-color: #262626;
+    /* border: 0.2rem solid #777; */
+  }
+  
+  .prev-date,
+  .next-date {
+    opacity: 0.5;
+  }
+  
+  .today {
+    background-color: #167e56;
+  }
+
+  .todo .active{
+    background: #167e56;
+  }
+  .todo-list {
+      height: 200px;
+      margin: 2em;
+      background: #262626;
+      visibility: hidden;
+  }
+  .todo-list .active {
+      visibility: visible;
+  }
