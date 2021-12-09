@@ -1,7 +1,6 @@
 window.addEventListener('load', main);
 
 const date = new Date();
-console.log(date);
 
 // const year = date.getFullYear();
 // console.log(year);
@@ -26,17 +25,14 @@ const renderCalenders = () => {
         date.getMonth() + 1,
         0
         ).getDate();
-        console.log('last', lastDay);
 
     const prevLastDay = new Date(
             date.getFullYear(),
             date.getMonth(),
             0
         ).getDate();
-        console.log(prevLastDay);
 
     const firstDayIndex = date.getDay();
-        console.log(firstDayIndex);
 
 
     const lastDayIndex = new Date(
@@ -44,10 +40,8 @@ const renderCalenders = () => {
             date.getMonth() + 1,
             0
         ).getDay();
-        console.log(lastDayIndex, 'lastDayIndex');
 
     const nextDays = 7 - lastDayIndex - 1;
-        console.log(nextDays);
 
     const months = [
             "January",
@@ -63,6 +57,17 @@ const renderCalenders = () => {
             "November",
             "December",
           ];
+    const weekDays = [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+        ];
+         
+    document.querySelector('.displayDay').innerHTML = weekDays[date.getDay()];
     let todayDate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
     document.querySelector('.displayDate').innerHTML = `${todayDate}`;
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -88,15 +93,8 @@ const renderCalenders = () => {
     }
     for (let j = 1; j <= nextDays; j++) {
         days += `<div class="next-date day">${j}</div>`;
-        monthDays.innerHTML = days;
-
-        
+        monthDays.innerHTML = days; 
     }
-
-
-
-    
-
 }
 
 function addEventsListeners() {
@@ -114,7 +112,7 @@ function addEventsListeners() {
     for (const dayBox of dayBoxes) {
         dayBox.addEventListener('click', () => {
             console.log("yes");
-            const todoList = document.querySelector('.todo');
+            let todoList = document.getElementById('todo');
             todoList.classList.toggle('active');
         })
         

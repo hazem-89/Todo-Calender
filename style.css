@@ -14,19 +14,49 @@ header {
     justify-content: center;
     align-items: center;
     color: aqua;
-    height: 10vh;
 }
 .container-sidebar-calendar{
     display: flex;
     flex-direction: row;
-    height:90vh;
 }
 .sidebar{
-    background-color: yellow;
+    background-color: rgb(190, 190, 102);
     width: 25%;
-    padding: 1em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* padding : 1em; */
 }
-
+.sidebar h2 {
+    font-size: 2.5em;
+}
+.displayDay {
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+}
+.displayDate, .displayTime{
+    font-size: 1.5em;
+    font-family: 'Courier New', Courier, monospace;
+}
+.todo{
+    margin-top: 1em;
+}
+.addTodo .big{
+    font-size: 5em;
+    cursor: pointer;
+}
+.add-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-box .small {
+    font-size: 3em;
+    padding-left: .5em;
+    cursor: pointer;
+} 
 .container{
     background-color: yellowgreen;
     width:75%;
@@ -65,22 +95,22 @@ header {
     font-size: 1.5em;
 }
 .weekDays{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 .4em;
     text-transform: uppercase;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    width: 100%;
 }
 .weekDays div {
     font-size: 1.2em;
     letter-spacing: .1em;
-    display: flex;
+    text-align: center;
+    padding: 1em;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2em 0;
+    padding: 2em 0; */
 }
 
 .days{
@@ -116,15 +146,13 @@ header {
     background-color: #167e56;
   }
 
-  .todo .active{
-    background: #167e56;
-  }
+ 
   .todo-list {
       height: 200px;
       margin: 2em;
       background: #262626;
       visibility: hidden;
   }
-  .todo-list .active {
+   .active {
       visibility: visible;
   }
