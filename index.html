@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="./main.js"></script>
+    <script src="./calender.js"></script>
+    <script src="./today.js"></script>
+    <script src="./todo.js"></script>
     <title>Calender</title>
 </head>
 
@@ -27,12 +29,14 @@
             </div>
             <div class="todo" id="todo">
                 <div class="addTodo">
-                    <i class="far fa-plus-square big"></i>
-                    <div class="add-box">
-                        <input type="text">
-                        <i class="far fa-plus-square small"></i>
+                    <i id="toggle-button" class="far fa-plus-square big"></i>
+                    <form class="todo-box">
+                        <input type="text" id="text">
+                        <button class="submitbutton">
+                            <i class="far fa-plus-square small"></i>
+                        </button>
 
-                    </div>
+                    </form>
                 </div>
                 <div class="todo-list">
 
