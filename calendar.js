@@ -1,117 +1,135 @@
 window.addEventListener('load', main);
 
-const date = new Date();
-
 
 function main() {
-    renderCalenders()
-    addEventsListeners()
+    generateCalendar()
+    addEventlistners()
     AlldaysOfTheWeek()
+    changeMonth()
+}
+let calendar = document.querySelector('.calendar')
+
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+isLeapYear = (year) => {
+    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
 }
 
-const renderCalenders = () => {
-    date.setDate(1)
-    const monthDays = document.querySelector('.days');
+getFebDays = (year) => {
+    return isLeapYear(year) ? 29 : 28
+}
 
-    const lastDay = new Date(
-        date.getFullYear(),
-        date.getMonth() + 1,
-        0
-        ).getDate();
+generateCalendar = (month, year) => {
 
-    const prevLastDay = new Date(
-            date.getFullYear(),
-            date.getMonth(),
-            0
-        ).getDate();
+    let calendarDays = document.querySelector('.calendar-days')
+    let calendarHeaderYear = document.querySelector('#year')
 
-    const firstDayIndex = date.getDay();
+    let daysOfMonth = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
+    calendarDays.innerHTML = ''
 
-    const lastDayIndex = new Date(
-            date.getFullYear(),
-            date.getMonth() + 1,
-            0
-        ).getDay();
-
-    const nextDays = 7 - lastDayIndex - 1;
-
-    const months = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
-          ];
-    const weekDays = [
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday',
-        ];
+    let currDate = new Date()
+    if (!month) month = currDate.getMonth()
+    if (!year) year = currDate.getFullYear()
 
 
-    let today = new Date();
-    let todayDate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
-    document.querySelector('.date h2').innerHTML = months[date.getMonth()];
-    document.querySelector('.date p').innerHTML =  todayDate;
+    let monthPicker = document.getElementById('month-picker');
+    let currMonth = `${months[month]}`
+    monthPicker.innerHTML = currMonth
+    calendarHeaderYear.innerHTML = year
 
-   
-        
-    let days = '';
+    // get first day of month
     
-    for (let x = firstDayIndex; x > 0; x--) {
-        days += `<div class = 'prev-date day'>${prevLastDay - x + 1}</div>`;
+    let firstDay = new Date(year, month, 1)
+    console.log(firstDay.getDay());
+    for (let i = 0; i <= daysOfMonth[month] + firstDay.getDay() - 1; i++) {
+        let day = document.createElement('div')
+        if (i >= firstDay.getDay()) {
+            day.classList.add('calendar-day-hover')
+            day.innerHTML = i - firstDay.getDay() + 1
+            day.innerHTML += `<span></span>
+                            <span></span>`
+            if (i - firstDay.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
+                day.classList.add('curr-date')
+            }
+        }
+        calendarDays.appendChild(day)
+    }
+    const dayBoxes = document.querySelectorAll('.calendar-day-hover');
+       for (const dayBox of dayBoxes) {
+       dayBox.addEventListener('click', () => {
+        console.log("yes");
+         let todoList = document.querySelector('.todo-list');
+       todoList.classList.toggle('active');
+     })
         
-    }
-    for (let i = 1; i <= lastDay; i++) {
-        if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
-            days += `<div class="today day">${i}</div>`;
-        } else {
-        days += `<div class="day">${i}</div>`;
-    }
-    }
-    for (let j = 1; j <= nextDays; j++) {
-        days += `<div class="next-date day">${j}</div>`;
-        monthDays.innerHTML = days; 
-    }
+ }
 }
 
-function addEventsListeners() {
-    document.querySelector('.prev').addEventListener('click', () => {
-        date.setMonth(date.getMonth() - 1);
-        renderCalenders();
-    });
-    document.querySelector('.next').addEventListener('click', () => {
-        date.setMonth(date.getMonth() + 1);
-        renderCalenders();
-    });
 
-
-    const dayBoxes = document.querySelectorAll('.day');
-    for (const dayBox of dayBoxes) {
-        dayBox.addEventListener('click', () => {
-            console.log("yes");
-            let todoList = document.querySelector('.todo-list');
-            todoList.classList.toggle('active');
-        })
-        
+function changeMonth() {
+    
+    let monthList = document.querySelector('.month-list');
+    months.forEach((e, index) => {
+    let month = document.createElement('div')
+    month.innerHTML = `<div data-month="${index}">${e}</div>`
+    month.querySelector('div').onclick = () => {
+        monthList.classList.remove('show')
+        curr_month.value = index
+        generateCalendar(index, curr_year.value)
     }
+    monthList.appendChild(month)
+})
 }
+
+
+
+
+let currDate = new Date()
+let curr_month = {value: currDate.getMonth()};
+let curr_year = {value: currDate.getFullYear()};
+
+function addEventlistners() {
+
+    document.querySelector('#prev-year').onclick = () => {
+    --curr_year.value
+    generateCalendar(curr_month.value, curr_year.value)
+}
+
+document.querySelector('#next-year').onclick = () => {
+    ++curr_year.value
+    generateCalendar(curr_month.value, curr_year.value)
+}
+
+let monthPicker = document.getElementById('month-picker');
+console.log(monthPicker);
+
+monthPicker.onclick = () => {
+    monthList.classList.add('show')
+}
+
+}
+
+// let dark_mode_toggle = document.querySelector('.dark-mode-switch')
+
+// dark_mode_toggle.onclick = () => {
+//     document.querySelector('body').classList.toggle('light')
+//     document.querySelector('body').classList.toggle('dark')
+// }
+
+
+
+
+
+
+
+
+
+
 
 
 function AlldaysOfTheWeek(){
-let elements = document.getElementsByClassName("weekDays")[0].getElementsByTagName("div")
+let elements = document.getElementsByClassName("calendar-week-day")[0].getElementsByTagName("div")
 
 
 const dayToday = new Date();
