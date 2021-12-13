@@ -88,6 +88,9 @@ header {
 }
 
 /* calendar */
+.month-picker {
+    cursor: pointer;
+}
 .container{
     background-color: var(--dark-body);
     width:75%;
