@@ -2,6 +2,7 @@ window.addEventListener('load', mainToDo);
 
 function mainToDo() {
     addEventListeners();
+    todoSummary();
 }
 
 function addEventListeners() {
@@ -48,3 +49,11 @@ const todos = [
 ];
 
 const todosByDay = todos.filter((todo) => todo.date === "2021-12-10")
+
+
+function todoSummary() {
+
+    let todoSum = document.querySelector('.todo-sum');
+    console.log(todoSum);
+    todoSum.innerHTML = 3;
+}

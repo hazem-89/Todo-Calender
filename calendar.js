@@ -4,7 +4,7 @@ window.addEventListener('load', main);
 function main() {
     generateCalendar()
     addEventlistners()
-    AlldaysOfTheWeek()
+    AllDaysOfTheWeek()
     changeMonth()
 }
 let calendar = document.querySelector('.calendar')
@@ -45,25 +45,25 @@ generateCalendar = (month, year) => {
     for (let i = 0; i <= daysOfMonth[month] + firstDay.getDay() - 1; i++) {
         let day = document.createElement('div')
         if (i >= firstDay.getDay()) {
-            day.classList.add('calendar-day-hover')
+            day.classList.add('calendar-day')
             day.innerHTML = i - firstDay.getDay() + 1
-            day.innerHTML += `<span></span>
-                            <span></span>`
+            day.innerHTML += `<span class = "todo-sum":></span>
+                            <span  class = "todo-spacial" ></span>`
             if (i - firstDay.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
                 day.classList.add('curr-date')
             }
         }
         calendarDays.appendChild(day)
     }
-    const dayBoxes = document.querySelectorAll('.calendar-day-hover');
+    const dayBoxes = document.querySelectorAll('.calendar-day');
        for (const dayBox of dayBoxes) {
        dayBox.addEventListener('click', () => {
-        console.log("yes");
          let todoList = document.querySelector('.todo-list');
        todoList.classList.toggle('active');
      })
         
  }
+ 
 }
 
 
@@ -101,21 +101,14 @@ document.querySelector('#next-year').onclick = () => {
     generateCalendar(curr_month.value, curr_year.value)
 }
 
-let monthPicker = document.getElementById('month-picker');
-console.log(monthPicker);
-
-monthPicker.onclick = () => {
+let monthList = document.querySelector('.month-list');
+document.getElementById('month-picker').onclick = () => {
     monthList.classList.add('show')
+};
+
+
 }
 
-}
-
-// let dark_mode_toggle = document.querySelector('.dark-mode-switch')
-
-// dark_mode_toggle.onclick = () => {
-//     document.querySelector('body').classList.toggle('light')
-//     document.querySelector('body').classList.toggle('dark')
-// }
 
 
 
@@ -127,8 +120,7 @@ monthPicker.onclick = () => {
 
 
 
-
-function AlldaysOfTheWeek(){
+function AllDaysOfTheWeek(){
 let elements = document.getElementsByClassName("calendar-week-day")[0].getElementsByTagName("div")
 
 
