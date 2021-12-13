@@ -39,7 +39,6 @@ header {
 .container-sidebar-calendar{
     display: flex;
     flex-direction: row;
-    height: 80vh;
 }
 .sidebar{
     background-color: rgb(190, 190, 102);
