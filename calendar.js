@@ -39,9 +39,7 @@ generateCalendar = (month, year) => {
     calendarHeaderYear.innerHTML = year
 
     // get first day of month
-    
     let firstDay = new Date(year, month, 1)
-    console.log(firstDay.getDay());
     for (let i = 0; i <= daysOfMonth[month] + firstDay.getDay() - 1; i++) {
         let day = document.createElement('div')
         if (i >= firstDay.getDay()) {
@@ -61,14 +59,10 @@ generateCalendar = (month, year) => {
          let todoList = document.querySelector('.todo-list');
        todoList.classList.toggle('active');
      })
-        
  }
- 
 }
 
-
 function changeMonth() {
-    
     let monthList = document.querySelector('.month-list');
     months.forEach((e, index) => {
     let month = document.createElement('div')
@@ -105,31 +99,13 @@ let monthList = document.querySelector('.month-list');
 document.getElementById('month-picker').onclick = () => {
     monthList.classList.add('show')
 };
-
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
 function AllDaysOfTheWeek(){
-let elements = document.getElementsByClassName("calendar-week-day")[0].getElementsByTagName("div")
-
-
+let today = document.getElementsByClassName("calendar-week-day")[0].getElementsByTagName("div")
 const dayToday = new Date();
-let colorDays = elements[dayToday.getDay()];
-
-
-
-colorDays.style.color = "pink"
+let colorDays = today[dayToday.getDay()];
+colorDays.classList.add('cur-day');
 
 
 }

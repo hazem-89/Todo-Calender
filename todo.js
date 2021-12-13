@@ -56,4 +56,5 @@ function todoSummary() {
     let todoSum = document.querySelector('.todo-sum');
     console.log(todoSum);
     todoSum.innerHTML = 3;
+    
 }
