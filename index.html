@@ -31,19 +31,26 @@
                 <div class="addTodo">
                     <i id="toggle-button" class="far fa-plus-square big"></i>
                     <form class="todo-box">
-                        <input type="text" id="text">
-                        <button class="submitbutton">
-                            <i class="far fa-plus-square small"></i>
+                        <input type="text" class="todo-input">
+                        <button class="todo-button" type="submit">
+                            <i class="far fa-plus-square"></i>
                         </button>
-
+                        <div class="select">
+                            <select name="todos" class="filter-todo">
+                                <option value="all">All</option>
+                                <option value="completed">Completed</option>
+                                <option value="uncompleted">Uncompleted</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
-                <div class="todo-list">
-                    <ul id=todoULDOM></ul>
+                <div class="todo-container">
+                    <div class="todo-list">
+                        <ul id=todoUlDOM></ul>
 
+                    </div>
                 </div>
             </div>
-
         </aside>
 
         <div class="container">
