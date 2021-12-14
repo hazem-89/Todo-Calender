@@ -10,6 +10,8 @@ function main() {
 let calendar = document.querySelector('.calendar')
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+console.log(months[0]);
+
 
 isLeapYear = (year) => {
     return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
@@ -71,6 +73,9 @@ function changeMonth() {
         monthList.classList.remove('show')
         curr_month.value = index
         generateCalendar(index, curr_year.value)
+        console.log(index);
+        console.log(e);
+
     }
     monthList.appendChild(month)
 })
@@ -106,7 +111,6 @@ let today = document.getElementsByClassName("calendar-week-day")[0].getElementsB
 const dayToday = new Date();
 let colorDays = today[dayToday.getDay()];
 colorDays.classList.add('cur-day');
-
 
 }
 
